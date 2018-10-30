@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Model</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="container">
+        <h1 class="mt-3"> Monitored URLs </h1>
+        <form method="POST" action="/urls">
+            <div class="input-group">
+                <input type="text" name="url" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </form>
+        #for(url in urllist) {
+            <p class="mb-0">
+                #(url.url)
+            </p>
+        }
+    </body>
+</html>

@@ -2,15 +2,20 @@ import Vapor
 
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
-    // "It works" page
-    router.get { req in
-        return try req.view().render("welcome")
+    router.get("urls") { req -> Future<View> in
+        return MonitoredURL.query(on: req).all().flatMap { urls in
+            let data = ["urllist": urls]
+            return try req.view().render("urllist", data)
+        }
     }
     
-    // Says hello
-    router.get("hello", String.parameter) { req -> Future<View> in
-        return try req.view().render("hello", [
-            "name": req.parameters.next(String.self)
-        ])
+    router.post("urls") {req -> Future<Response> in
+        return try req.content.decode(MonitoredURL.self).flatMap { url in
+            return url.save(on: req).map { _ in
+                return req.redirect(to: "urls")
+            }
+            
+        }
+        
     }
 }

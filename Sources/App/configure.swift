@@ -27,6 +27,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(middlewares)
     
     var migrations = MigrationConfig()
-    migrations.add(model: MonitoredURL.self, database: .sqlite)
+    migrations.add(model: MonitoredEMail.self, database: .sqlite)
     services.register(migrations)
 }

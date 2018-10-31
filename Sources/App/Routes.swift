@@ -58,8 +58,8 @@ public func routes(_ router: Router) throws {
 //        }
     router.get() { req -> Future<View> in
         return MonitoredEMail.query(on: req).all().flatMap { addresses in
-            let q = addresses.map {address -> Future<AccountEntry> in
-                let p = req.eventLoop.newPromise(AccountEntry.self)
+            let accountList = addresses.map {address -> Future<AccountEntry> in
+                let promise = req.eventLoop.newPromise(AccountEntry.self)
                 DispatchQueue.global().async {
                     do {
                         let client = try req.make(Client.self)
@@ -69,14 +69,14 @@ public func routes(_ router: Router) throws {
                         let pwndData = try response.flatMap(to: [PwndEntry].self) { response -> Future<[PwndEntry]> in
                             return try response.content.decode([PwndEntry].self)
                         }.wait()
-                        p.succeed(result: AccountEntry(Address: address.address, Pwnd: pwndData))
+                        promise.succeed(result: AccountEntry(Address: address.address, Pwnd: pwndData))
                     } catch {
-                        p.fail(error: error)
+                        promise.fail(error: error)
                     }
                 }
-                return p.futureResult;
+                return promise.futureResult;
             }
-            return try req.view().render("emaillist", ["addresses": q])
+            return try req.view().render("emaillist", ["addresses": accountList])
         }
 
     }
@@ -88,7 +88,6 @@ public func routes(_ router: Router) throws {
         let exampleData = response.flatMap(to: [PwndEntry].self) { response in
             return try response.content.decode([PwndEntry].self)
         }
-        let m = String(reflecting: exampleData)
         return try req.view().render("pwnd", ["pwndlist" : exampleData])
 
 

@@ -17,6 +17,10 @@ public func routes(_ router: Router) throws {
         return "Hello"
     }
     
+    router.get("helloView")  { req -> Future<View> in
+        return try req.view().render("hello")
+    }
+    
     
     
     router.get("sites", use:listController.pwndList)

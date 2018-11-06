@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pwnd E-Mails</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<h1 class="mt-3"> Monitored E-Mail addresses </h1>
+<form method="POST" action="/simple">
+<div class="input-group">
+<input type="text" name="address" class="form-control">
+<div class="input-group-append">
+<button class="btn btn-outline-secondary" type="submit">
+Create
+</button>
+</div>
+</div>
+</form>
+
+
+#for(address in addresses) {
+<p>#(address)</p>
+}
+
+</body>
+</html>

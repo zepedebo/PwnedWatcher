@@ -6,7 +6,7 @@
     </head>
     <body class="container">
         <h1 class="mt-3"> Monitored E-Mail addresses </h1>
-        <form method="POST" action="/urls">
+        <form method="POST" action="/emails">
             <div class="input-group">
                 <input type="text" name="address" class="form-control">
                 <div class="input-group-append">
@@ -16,10 +16,23 @@
                 </div>
             </div>
         </form>
+        <table class="table">
+<tr>
+<th scope="col">E-Mail Address</th>
+<th scope="col">Breach Count</th>
+<th scope="col">Breached Sites</th>
+</tr>
+
         #for(address in addresses) {
-            <p class="mb-0">
-#(address.Address) #count(address.Pwnd)
-            </p>
+            <tr><td>
+
+#(address.Address)</td><td> #count(address.Pwnd)</td><td>
+#for(site in address.Pwnd) {
+#(site.Name)<br>
+}
+</td></tr>
+
         }
+        </table>
     </body>
 </html>

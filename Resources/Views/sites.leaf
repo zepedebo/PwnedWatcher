@@ -1,16 +1,14 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>Model</title>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container">
-<h1 class="mt-3"> Breached Sites </h1>
-#for(site in pwndlist) {
-<p class="mb-0">
-#(site.Name)
-</p>
-}
-</body>
+    <head>
+        <title>Model</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="container">
+        <h1 class="mt-3"> Breached Sites </h1>
+        #for(site in pwndlist) {
+            <p class="mb-0">#(site.Name)</p>
+        }
+    </body>
 </html>

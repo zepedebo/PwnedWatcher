@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Hello MacTech!</title>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container">
-<h1 class="mt-3"> A Simple View </h1>
+    <head>
+        <title>Hello MacTech!</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="container">
+        <h1 class="mt-3"> A Simple View </h1>
 
-<p>Hello MacTech 2018</p>
+        <p>Hello MacTech 2018</p>
 
-</body>
+    </body>
 </html>
 

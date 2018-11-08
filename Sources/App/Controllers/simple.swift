@@ -9,7 +9,6 @@ final class SimpleController {
             }
             return try req.view().render("simple", ["addresses": emaillist])
         }
-
     }
 
     func addEMail(_ req: Request) throws -> Future<Response> {

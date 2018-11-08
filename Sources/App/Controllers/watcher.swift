@@ -7,12 +7,17 @@ final class WatcherController {
                 let promise = req.eventLoop.newPromise(AccountEntry.self)
                 DispatchQueue.global().async {
                     do {
+                        // Make the call
                         let client = try req.make(Client.self)
                         let query = "https://haveibeenpwned.com/api/v2/breachedaccount/" + address.address
                         let response = client.get(query, headers: ["User-Agent":"account checker"])
-                        
-                        let pwndData = try response.flatMap(to: [PwndEntry].self) { response -> Future<[PwndEntry]> in
-                            return try response.content.decode([PwndEntry].self)
+                      
+                        // Decode the result
+                        let pwndData = try response.flatMap(to: [PwndEntry].self) { entryResponse -> Future<[PwndEntry]> in
+                            guard entryResponse.http.status == HTTPResponseStatus.ok else {
+                                return response.map(to: [PwndEntry].self, {_ in return [PwndEntry]()});
+                            }
+                            return try entryResponse.content.decode([PwndEntry].self)
                             }.wait()
                         promise.succeed(result: AccountEntry(Address: address.address, Pwnd: pwndData))
                     } catch {

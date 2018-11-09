@@ -25,12 +25,11 @@
 
         #for(address in addresses) {
             <tr><td>
-
-#(address.Address)</td><td> #count(address.Pwnd)</td><td>
-#for(site in address.Pwnd) {
-#(site.Name)<br>
-}
-</td></tr>
+            #(address.Address)</td><td> #count(address.Pwnd)</td><td>
+            #for(site in address.Pwnd) {
+                #(site.Name)<br>
+            }
+            </td></tr>
 
         }
         </table>

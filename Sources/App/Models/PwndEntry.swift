@@ -9,7 +9,8 @@ struct PwndEntry: Codable {
     var ModifiedDate : String
     var PwnCount : Int
     var Description : String
-    var LogoType : String
+    var LogoType : String?
+    var LogoPath: String
     var DataClasses : [String]
     var IsVerified : Bool
     var IsFabricated : Bool

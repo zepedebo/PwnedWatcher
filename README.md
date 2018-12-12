@@ -1,3 +1,6 @@
+<p>
+    This is a simple web application written with Swift and Vapor that will manage a list of e-mail addresses and check them against "Have I been Pwned" to see if they have been involved in an account hack.
+</p>
 <p align="center">
     <img src="https://user-images.githubusercontent.com/1342803/43869499-ce6ce122-9b40-11e8-8894-e0c48eabf270.png" width="320" alt="Web Template">
     <br>

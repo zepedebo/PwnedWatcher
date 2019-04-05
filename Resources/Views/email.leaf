@@ -1,0 +1,21 @@
+#set("title") { Monitored Emails }
+
+#set("body") {
+<h1 class="mt-3"> Monitored E-Mail addresses </h1>
+<form method="POST" action="/emails">
+    <div class="input-group">
+        <input type="text" name="address" class="form-control">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit"> Add </button>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <tr> <th scope="col">E-Mail Address</th> </tr>
+    #for(email in addresses) {
+        <tr><td>#(email.address)</td></tr>
+    }
+</table>
+}
+
+#embed("base")

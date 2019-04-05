@@ -6,8 +6,8 @@ final class MonitoredEMail: SQLiteModel {
     var address: String
     
     init(id: Int? = nil, address: String) {
-        self.id = id;
-        self.address = address;
+        self.id = id
+        self.address = address
     }
 }
 
